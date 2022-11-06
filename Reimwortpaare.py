@@ -42,6 +42,13 @@ def bestimme_Endung(wort):
         stelle += 1        
     return letzte_voklgrup
 
+def eins_im_anderen(wort1, wort2):
+    len1 = len(wort1)
+    len2 = len(wort2)
+    return (len1 < len2 and wort1.lower() == wort2[-len1:].lower())\
+    or\
+    (len1 > len2 and wort2.lower() == wort1[-len2:].lower())
+
 def paare_aus_liste(wortliste):
     auspufffaf = []
     restlistee = wortliste
@@ -52,9 +59,7 @@ def paare_aus_liste(wortliste):
             break
         for wort in restlistee:
             # Regel 3 ist hier
-            len1 = len(guckwort)
-            len2 = len(wort)
-            if (len1 < len2 and guckwort.lower() == wort[-len1:].lower()) or (len1 > len2 and wort.lower() == guckwort[-len2:].lower()):
+            if eins_im_anderen(guckwort, wort):
                 continue
             paarliste = [guckwort, wort]
             auspufffaf.append(paarliste)
