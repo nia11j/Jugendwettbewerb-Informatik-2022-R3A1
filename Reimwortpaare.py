@@ -1,3 +1,7 @@
+#!/usr/bin/python
+
+import sys
+
 def reimwortpaare(wortliste):
     reimwörterbuch = {}
     for wort in wortliste:
@@ -70,4 +74,12 @@ def wortliste_aus_datei(datei):
     d = open(datei, 'r')
     for zeile in d:
         wortliste.append(zeile.strip('\n'))
+    return wortliste
+
+def reimwortpaar_haupt_funktion(datei):
+    wortliste = wortliste_aus_datei(datei)
     print(reimwortpaare(wortliste))
+
+if __name__ == '__main__':
+    datei = sys.argv[1]
+    reimwortpaar_haupt_funktion(datei)
